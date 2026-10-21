@@ -1,31 +1,134 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Reader Friendly állapotoldal
+# Dokumentáció: https://upptime.js.org/docs/configuration
+owner: ketszeri
+repo: reader-friendly-status
+user-agent: ketszeri
+
+# Nincs titkos URL vagy kulcs: csak nyilvános címeket ellenőrzünk.
+secrets: []
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: Reader Friendly szolgáltatás
+    slug: szolgaltatas
+    url: https://reader.ketszeri.hu/health
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 5000
+    __dangerous__body_down_if_text_missing: '"status":"ok"'
+    icon: https://reader.ketszeri.hu/favicon.ico
+  - name: Reader Friendly weboldal
+    slug: weboldal
+    url: https://reader.ketszeri.hu/
+    method: HEAD
+    expectedStatusCodes:
+      - 200
+    maxResponseTime: 5000
+    icon: https://reader.ketszeri.hu/favicon.ico
+
+# Nincs kijelölt felelős és nincs értesítés: a leállásokról csak a hibajegy készül.
+skipDescriptionUpdate: true
+skipTopicsUpdate: true
+
+commitMessages:
+  readmeContent: "Összefoglaló frissítése [skip ci] [upptime]"
+  summaryJson: "Állapot-összesítő frissítése [skip ci] [upptime]"
+  statusChange: "$SITE_NAME: $STATUS ($RESPONSE_CODE, $RESPONSE_TIME ms) [skip ci] [upptime]"
+  graphsUpdate: "Grafikonok frissítése [skip ci] [upptime]"
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  cname: status.ketszeri.hu
+  name: Reader Friendly állapot
+  logoUrl: https://reader.ketszeri.hu/favicon.ico
+  favicon: https://reader.ketszeri.hu/favicon.ico
+  theme: light
+  introTitle: "A Reader Friendly szolgáltatás állapota"
+  introMessage: "Ezen az oldalon látható, hogy a Reader Friendly szolgáltatás és weboldal éppen elérhető-e. Az ellenőrzés ötpercenként fut. Ha kérdése van, vagy hibát tapasztal, a [Támogatás](https://reader.ketszeri.hu/tamogatas) oldalon talál segítséget."
   navbar:
-    - title: Status
+    - title: Állapot
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
+    - title: Reader Friendly
+      href: https://reader.ketszeri.hu/
+    - title: Támogatás
+      href: https://reader.ketszeri.hu/tamogatas
+  robotsText: "User-agent: *\nAllow: /"
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+i18n:
+  activeIncidents: Aktuális fennakadások
+  allSystemsOperational: Minden rendszer működik
+  incidentReport: "#$NUMBER. fennakadás részletei"
+  activeIncidentSummary: "Kezdete: $DATE, $POSTS bejegyzés"
+  incidentTitle: "$NUMBER. fennakadás részletei"
+  incidentDetails: A fennakadás részletei
+  incidentFixed: Megoldva
+  incidentOngoing: Folyamatban
+  incidentOpenedAt: Kezdete
+  incidentClosedAt: Vége
+  incidentViewOnGitHub: Megtekintés és feliratkozás a GitHubon
+  incidentCommentSummary: "$DATE, $AUTHOR"
+  incidentBack: Vissza a fennakadások listájához
+  pastIncidents: Korábbi fennakadások
+  pastIncidentsResolved: "$MINUTES perc alatt megoldva, $POSTS bejegyzés"
+  liveStatus: Jelenlegi állapot
+  overallUptime: "Teljes rendelkezésre állás: $UPTIME"
+  overallUptimeTitle: Teljes rendelkezésre állás
+  averageResponseTime: "Átlagos válaszidő: $TIME ms"
+  averageResponseTimeTitle: Átlagos válaszidő
+  sevelDayResponseTime: Válaszidő az elmúlt 7 napban
+  responseTimeMs: Válaszidő (ms)
+  up: Működik
+  down: Nem elérhető
+  degraded: Lassú
+  ms: ms
+  loading: Betöltés
+  navGitHub: GitHub
+  footer: "Ez az oldal [nyílt forráskódú]($REPO), az [Upptime](https://upptime.js.org) szolgáltatja."
+  rateLimitExceededTitle: Túl sok lekérés
+  rateLimitExceededIntro: "Ebből a hálózatból egy órán belül túl sok lekérés érkezett, ezért egy kis várakozás után próbálja újra. Ha van GitHub személyes hozzáférési tokenje, megadhatja, és akkor azonnal folytathatja."
+  rateLimitExceededWhatDoesErrorMean: Mit jelent ez a hiba?
+  rateLimitExceededErrorMeaning: "Ez az oldal a GitHub API-ból tölti be az állapotadatokat. A GitHub egy IP-címről óránként legfeljebb 60 lekérést enged, és ez most elfogyott."
+  rateLimitExceededErrorHowCanFix: Mit tehetek?
+  rateLimitExceededErrorFix: "Egy óra múlva a keret újra rendelkezésre áll. Ha megadja a saját GitHub személyes hozzáférési tokenjét, óránként további 5000 lekérés áll rendelkezésére."
+  rateLimitExceededGeneratePAT: Hogyan készíthetek személyes hozzáférési tokent?
+  rateLimitExceededHasSet: A személyes hozzáférési token be van állítva.
+  rateLimitExceededRemoveToken: Token törlése
+  rateLimitExceededGitHubPAT: GitHub személyes hozzáférési token
+  rateLimitExceededCopyPastePAT: Másolja be a tokent
+  rateLimitExceededSaveToken: Token mentése
+  errorTitle: Hiba történt
+  errorIntro: Nem sikerült betölteni a legfrissebb állapotot.
+  errorText: Néhány perc múlva próbálja újra.
+  errorHome: Vissza a kezdőlapra
+  pastScheduledMaintenance: Korábbi tervezett karbantartások
+  scheduledMaintenance: Tervezett karbantartás
+  scheduledMaintenanceSummaryStarted: "Kezdete: $DATE, időtartam: $DURATION perc"
+  scheduledMaintenanceSummaryStarts: "Kezdés: $DATE, időtartam: $DURATION perc"
+  startedAt: Kezdete
+  startsAt: Kezdés
+  duration: Időtartam
+  durationMin: "$DURATION perc"
+  incidentCompleted: Befejeződött
+  incidentScheduled: Tervezett
+  duration24H: 24 óra
+  duration7D: 7 nap
+  duration30D: 30 nap
+  duration1Y: 1 év
+  durationAll: összes
+  locale: hu-HU
+  # README
+  url: Cím
+  status: Állapot
+  history: Előzmények
+  responseTime: Válaszidő
+  responseTimeGraphAlt: Válaszidő-grafikon
+  responseTimeDay: Válaszidő az elmúlt 24 órában
+  responseTimeWeek: Válaszidő az elmúlt 7 napban
+  responseTimeMonth: Válaszidő az elmúlt 30 napban
+  responseTimeYear: Válaszidő az elmúlt évben
+  uptime: Rendelkezésre állás
+  uptimeDay: Rendelkezésre állás az elmúlt 24 órában
+  uptimeWeek: Rendelkezésre állás az elmúlt 7 napban
+  uptimeMonth: Rendelkezésre állás az elmúlt 30 napban
+  uptimeYear: Rendelkezésre állás az elmúlt évben
+  degradedPerformance: Lassú működés
+  partialOutage: Részleges kiesés
+  completeOutage: Teljes kiesés
