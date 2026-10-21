@@ -15,7 +15,7 @@ sites:
       - 200
     maxResponseTime: 5000
     __dangerous__body_down_if_text_missing: '"status":"ok"'
-    icon: https://reader.ketszeri.hu/favicon.ico
+    icon: https://status.ketszeri.hu/reader-friendly-32.png
   - name: Reader Friendly weboldal
     slug: weboldal
     url: https://reader.ketszeri.hu/
@@ -23,7 +23,7 @@ sites:
     expectedStatusCodes:
       - 200
     maxResponseTime: 5000
-    icon: https://reader.ketszeri.hu/favicon.ico
+    icon: https://status.ketszeri.hu/reader-friendly-32.png
 
 # Nincs kijelölt felelős és nincs értesítés: a leállásokról csak a hibajegy készül.
 skipDescriptionUpdate: true
@@ -43,9 +43,10 @@ commitMessages:
 status-website:
   cname: status.ketszeri.hu
   name: Reader Friendly állapot
-  logoUrl: https://reader.ketszeri.hu/favicon.ico
-  favicon: https://reader.ketszeri.hu/favicon.ico
-  theme: light
+  logoUrl: https://status.ketszeri.hu/reader-friendly-256.png
+  favicon: https://status.ketszeri.hu/reader-friendly-32.png
+  themeUrl: https://status.ketszeri.hu/reader-friendly.css
+  customHeadHtml: '<link rel="apple-touch-icon" href="https://status.ketszeri.hu/apple-touch-icon.png"><meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark">'
   introTitle: "A Reader Friendly szolgáltatás állapota"
   introMessage: "Itt látod, hogy a Reader Friendly szolgáltatás és a weboldal éppen elérhető-e. Ötpercenként ellenőrizzük. Ha kérdésed van, vagy valami nem működik, a [Támogatás](https://reader.ketszeri.hu/tamogatas) oldalon találsz segítséget."
   navbar:
