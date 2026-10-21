@@ -29,10 +29,15 @@ sites:
 skipDescriptionUpdate: true
 skipTopicsUpdate: true
 
+# Szöveges állapotjelzők a commit üzenetek elején (az Upptime ezekből olvassa ki az állapotot).
+commitPrefixStatusUp: "[fent]"
+commitPrefixStatusDegraded: "[lassu]"
+commitPrefixStatusDown: "[leallt]"
+
 commitMessages:
   readmeContent: "Összefoglaló frissítése [skip ci] [upptime]"
   summaryJson: "Állapot-összesítő frissítése [skip ci] [upptime]"
-  statusChange: "$SITE_NAME: $STATUS ($RESPONSE_CODE, $RESPONSE_TIME ms) [skip ci] [upptime]"
+  statusChange: "$PREFIX $SITE_NAME: $STATUS ($RESPONSE_CODE in $RESPONSE_TIME ms) [skip ci] [upptime]"
   graphsUpdate: "Grafikonok frissítése [skip ci] [upptime]"
 
 status-website:
@@ -42,7 +47,7 @@ status-website:
   favicon: https://reader.ketszeri.hu/favicon.ico
   theme: light
   introTitle: "A Reader Friendly szolgáltatás állapota"
-  introMessage: "Ezen az oldalon látható, hogy a Reader Friendly szolgáltatás és weboldal éppen elérhető-e. Az ellenőrzés ötpercenként fut. Ha kérdése van, vagy hibát tapasztal, a [Támogatás](https://reader.ketszeri.hu/tamogatas) oldalon talál segítséget."
+  introMessage: "Itt látod, hogy a Reader Friendly szolgáltatás és a weboldal éppen elérhető-e. Ötpercenként ellenőrizzük. Ha kérdésed van, vagy valami nem működik, a [Támogatás](https://reader.ketszeri.hu/tamogatas) oldalon találsz segítséget."
   navbar:
     - title: Állapot
       href: /
@@ -50,6 +55,8 @@ status-website:
       href: https://reader.ketszeri.hu/
     - title: Támogatás
       href: https://reader.ketszeri.hu/tamogatas
+  # Az Upptime az összesítő sor elé emojit tesz; ezt eltávolítjuk.
+  js: "(function(){var r=/^[^\\p{L}\\p{N}]+/u;function f(){document.querySelectorAll('article:not(.link)').forEach(function(a){var n=a.firstChild;if(n&&n.nodeType===3&&r.test(n.nodeValue)){n.nodeValue=n.nodeValue.replace(r,'')}})}new MutationObserver(f).observe(document.documentElement,{childList:true,subtree:true,characterData:true});document.addEventListener('DOMContentLoaded',f)})();"
   robotsText: "User-agent: *\nAllow: /"
 
 i18n:
@@ -63,7 +70,7 @@ i18n:
   incidentOngoing: Folyamatban
   incidentOpenedAt: Kezdete
   incidentClosedAt: Vége
-  incidentViewOnGitHub: Megtekintés és feliratkozás a GitHubon
+  incidentViewOnGitHub: Nézd meg, és iratkozz fel a GitHubon
   incidentCommentSummary: "$DATE, $AUTHOR"
   incidentBack: Vissza a fennakadások listájához
   pastIncidents: Korábbi fennakadások
@@ -83,20 +90,20 @@ i18n:
   navGitHub: GitHub
   footer: "Ez az oldal [nyílt forráskódú]($REPO), az [Upptime](https://upptime.js.org) szolgáltatja."
   rateLimitExceededTitle: Túl sok lekérés
-  rateLimitExceededIntro: "Ebből a hálózatból egy órán belül túl sok lekérés érkezett, ezért egy kis várakozás után próbálja újra. Ha van GitHub személyes hozzáférési tokenje, megadhatja, és akkor azonnal folytathatja."
+  rateLimitExceededIntro: "Ebből a hálózatból egy órán belül túl sok lekérés érkezett, ezért várj egy kicsit, és próbáld újra. Ha van GitHub személyes hozzáférési tokened, add meg, és azonnal folytathatod."
   rateLimitExceededWhatDoesErrorMean: Mit jelent ez a hiba?
   rateLimitExceededErrorMeaning: "Ez az oldal a GitHub API-ból tölti be az állapotadatokat. A GitHub egy IP-címről óránként legfeljebb 60 lekérést enged, és ez most elfogyott."
   rateLimitExceededErrorHowCanFix: Mit tehetek?
-  rateLimitExceededErrorFix: "Egy óra múlva a keret újra rendelkezésre áll. Ha megadja a saját GitHub személyes hozzáférési tokenjét, óránként további 5000 lekérés áll rendelkezésére."
-  rateLimitExceededGeneratePAT: Hogyan készíthetek személyes hozzáférési tokent?
+  rateLimitExceededErrorFix: "Egy óra múlva újra betöltheted az oldalt. Ha megadod a saját GitHub személyes hozzáférési tokenedet, óránként további 5000 lekérést használhatsz."
+  rateLimitExceededGeneratePAT: Így készíthetsz személyes hozzáférési tokent
   rateLimitExceededHasSet: A személyes hozzáférési token be van állítva.
   rateLimitExceededRemoveToken: Token törlése
   rateLimitExceededGitHubPAT: GitHub személyes hozzáférési token
-  rateLimitExceededCopyPastePAT: Másolja be a tokent
+  rateLimitExceededCopyPastePAT: Másold be a tokent
   rateLimitExceededSaveToken: Token mentése
   errorTitle: Hiba történt
   errorIntro: Nem sikerült betölteni a legfrissebb állapotot.
-  errorText: Néhány perc múlva próbálja újra.
+  errorText: Néhány perc múlva próbáld újra.
   errorHome: Vissza a kezdőlapra
   pastScheduledMaintenance: Korábbi tervezett karbantartások
   scheduledMaintenance: Tervezett karbantartás
