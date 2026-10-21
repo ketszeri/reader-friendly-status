@@ -1,0 +1,80 @@
+/* Reader Friendly téma: ugyanaz a papír, tinta és zöld, mint a Facebook-borítón és a reader.ketszeri.hu oldalakon. */
+:root {
+  --rf-paper: #f3efe6;
+  --rf-card: #faf7f0;
+  --rf-ink: #1c1915;
+  --rf-muted: #5e574e;
+  --rf-rule: #d9d0c3;
+  --rf-green: #1d6b4f;
+  --rf-red: #a33a2b;
+  --rf-amber: #a8701a;
+  --rf-serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Liberation Serif", serif;
+  --rf-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --body-background-color: var(--rf-paper);
+  --body-text-color: var(--rf-ink);
+  --card-background-color: var(--rf-card);
+  --nav-background-color: var(--rf-paper);
+  --nav-border-bottom-color: var(--rf-rule);
+  --nav-current-border-bottom-color: var(--rf-green);
+  --card-border-color: var(--rf-rule);
+  --down-border-left-color: var(--rf-red);
+  --down-background-color: #f4e1dc;
+  --degraded-border-left-color: var(--rf-amber);
+  --up-border-left-color: var(--rf-green);
+  --tag-color: #ffffff;
+  --tag-up-background-color: var(--rf-green);
+  --tag-down-background-color: var(--rf-red);
+  --tag-degraded-background-color: var(--rf-amber);
+  --change-background-color: var(--rf-amber);
+  --error-button-border-color: var(--rf-green);
+  --error-button-background-color: var(--rf-green);
+  --error-button-color: #ffffff;
+  --submit-button-border-color: var(--rf-green);
+  --submit-button-background-color: var(--rf-green);
+  --submit-button-color: #ffffff;
+  --graph-opacity: 0.55;
+  --graph-filter: hue-rotate(-18deg) saturate(0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rf-paper: #141311;
+    --rf-card: #1c1a17;
+    --rf-ink: #f3efe6;
+    --rf-muted: #b7aea2;
+    --rf-rule: #3a342c;
+    --rf-green: #8fceb0;
+    --rf-red: #e08a7c;
+    --rf-amber: #e0b56a;
+    --down-background-color: #2c1b17;
+    --tag-color: #141311;
+    --error-button-color: #141311;
+    --submit-button-color: #141311;
+    --graph-opacity: 0.4;
+  }
+}
+
+html, body { background: var(--rf-paper); color: var(--rf-ink); }
+body { font-family: var(--rf-serif); line-height: 1.45; -webkit-font-smoothing: antialiased; }
+a { color: var(--rf-green); }
+
+/* Fejléc: a borító felirata, ritkított nagybetűkkel. */
+nav { box-shadow: none !important; }
+nav a, nav li { font-family: var(--rf-sans); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rf-muted); }
+nav a[aria-current] { color: var(--rf-ink); }
+nav .logo { font-family: var(--rf-serif); font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rf-ink); font-weight: 400; }
+nav .logo img { border-radius: 22%; border: 0; box-shadow: none; background: transparent; }
+
+/* Bevezető: középre zárt cím, alatta vékony vonal, mint a borítón. */
+header h1 { font-family: var(--rf-serif); font-weight: 400; font-size: 2.1rem; line-height: 1.15; letter-spacing: -0.005em; }
+header h1::after { content: ""; display: block; width: 4.5rem; height: 1px; background: var(--rf-rule); margin: 1.1rem 0 0; }
+header .lead { font-family: var(--rf-serif); font-size: 1.1rem; color: var(--rf-ink); }
+h2, h3, h4 { font-family: var(--rf-serif); font-weight: 500; }
+
+/* Kártyák: papír, vékony keret, árnyék nélkül. */
+article { border-radius: 6px !important; box-shadow: none !important; font-family: var(--rf-serif); }
+article .data, form, form a, form button { font-family: var(--rf-sans); }
+article .data { color: var(--rf-muted); }
+
+footer, footer p { font-family: var(--rf-sans); font-size: 0.82rem; color: var(--rf-muted); }
