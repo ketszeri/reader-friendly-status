@@ -78,3 +78,18 @@ article .data, form, form a, form button { font-family: var(--rf-sans); }
 article .data { color: var(--rf-muted); }
 
 footer, footer p { font-family: var(--rf-sans); font-size: 0.82rem; color: var(--rf-muted); }
+
+/* Válaszidő-grafikon: a grafikon alakja marad, de a Reader Friendly zöldjével, halványan. */
+article.graph { background-image: none !important; position: relative; }
+article.graph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--rf-green);
+  opacity: 0.22;
+  -webkit-mask: var(--background) right center / contain no-repeat;
+  mask: var(--background) right center / contain no-repeat;
+  pointer-events: none;
+}
+article.graph > * { position: relative; }
