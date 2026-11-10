@@ -1,7 +1,7 @@
 url: https://reader.ketszeri.hu/health
-status: down
-code: 530
-responseTime: 73
-lastUpdated: 2026-11-10T08:51:02.051Z
+status: up
+code: 200
+responseTime: 942
+lastUpdated: 2026-11-10T16:43:29.579Z
 startTime: 2026-10-21T18:33:58.492Z
 generator: Upptime <https://github.com/upptime/upptime>
